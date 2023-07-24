@@ -1,5 +1,23 @@
 import React from "react";
-import { Bar, HorizontalBar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const data = {
   labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -14,11 +32,30 @@ const data = {
   ],
 };
 
+export const options = {
+  indexAxis: 'y' as const,
+  elements: {
+    bar: {
+      borderWidth: 2,
+    },
+  },
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'right' as const,
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Horizontal Bar Chart',
+    },
+  },
+};
+
 const BarPlot: React.FC = () => {
   return (
     <div>
       <Bar data={data} />
-      <HorizontalBar data={data} />
+      <Bar options={options} data={data} />
     </div>
   );
 };

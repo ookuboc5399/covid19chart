@@ -1,72 +1,51 @@
 import React from "react";
+import { faker } from '@faker-js/faker';
+import {
+    Chart as ChartJS,
+    LinearScale,
+    PointElement,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
 import { Bubble } from "react-chartjs-2";
+ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
 
-const data = {
-  labels: ["React", "", ""],
-  datasets: [
-    {
-      label: "React",
-      backgroundColor: "#4169e1",
-      borderColor: "transparent",
-      data: [{ x: 20, y: 866, r: 6350000 / 100000 }],
-    },
-    {
-      label: "Angular",
-      backgroundColor: "#c71585",
-      borderColor: "transparent",
-      data: [{ x: 30, y: 389, r: 410000 / 100000 }],
-    },
-    {
-      label: "Vue",
-      backgroundColor: "#008080",
-      borderColor: "transparent",
-      data: [{ x: 10, y: 749, r: 1320000 / 100000 }],
-    },
-  ],
-};
 
-const options = {
-  title: {
-    display: true,
-    fontSize: 18,
-    text: "NMP downloads comparison (global)",
-  },
-  scales: {
-    yAxes: [
+export const data = {
+    datasets: [
       {
-        scaleLabel: {
-          display: true,
-          labelString: "Number of job offer in LinkedIn (Japan)",
-          fontSize: 18,
-        },
-        ticks: {
-          min: 0,
-          max: 1300,
-          fontSize: 14,
-        },
+        label: 'Red dataset',
+        data: Array.from({ length: 50 }, () => ({
+          x: faker.datatype.number({ min: -100, max: 100 }),
+          y: faker.datatype.number({ min: -100, max: 100 }),
+          r: faker.datatype.number({ min: 5, max: 20 }),
+        })),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: 'Blue dataset',
+        data: Array.from({ length: 50 }, () => ({
+          x: faker.datatype.number({ min: -100, max: 100 }),
+          y: faker.datatype.number({ min: -100, max: 100 }),
+          r: faker.datatype.number({ min: 5, max: 20 }),
+        })),
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
-    xAxes: [
-      {
-        scaleLabel: {
-          display: true,
-          labelString: "Learning Cost",
-          fontSize: 18,
-        },
-        ticks: {
-          min: 5,
-          max: 35,
-          fontSize: 14,
-        },
+  };
+
+export const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
       },
-    ],
-  },
-};
+    },
+  };
 
 const BubblePlot: React.FC = () => {
   return (
     <div>
-      <Bubble data={data} options={options} />
+      <Bubble options={options} data={data} />
     </div>
   );
 };

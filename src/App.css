@@ -1,7 +1,19 @@
 .App {
   background-color: #282c34;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
+
+.App_child {
+  width: 70%;
+}
+
+.App_child2 {
+  background-color: aliceblue;
+  margin-top: 5rem;
+}
+
 
 .App-logo {
   height: 40vmin;

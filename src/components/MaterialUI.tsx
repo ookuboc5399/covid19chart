@@ -62,7 +62,7 @@ const MaterialUI: React.FC = () => {
         container
         spacing={1}
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="flex-end"
       >
         <Grid item xs={1}>
@@ -86,7 +86,7 @@ const MaterialUI: React.FC = () => {
             Test
           </Grid>
         </Grid>
-        <Grid item xs={12} justify="space-around" container>
+        <Grid item xs={12} justifyContent="space-around" container>
           <Grid item xs={3}>
             Resources JSONPlaceholder comes with a set of 6 common resources:
             /posts 100 posts /comments 500 comments /albums 100 albums /photos
